@@ -1,5 +1,5 @@
 // For more info, check https://docs.netlify.com/functions/build-with-javascript
-module.exports.handler = async function (event, context) {
+module.exports.handler = async function (event) {
   console.log('queryStringParameters', event.queryStringParameters);
   return {
     // return null to show no errors
