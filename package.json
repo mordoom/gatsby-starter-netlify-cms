@@ -8,10 +8,10 @@
     "start": "npm run develop",
     "build": "npm run clean && gatsby build",
     "develop": "npm run clean && gatsby develop",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js,src/**/*.tsx,src/**/*.ts}\"",
+    "format": "prettier --write \"{gatsby-*.js,src/**/*.js,src/**/*.tsx,src/**/*.ts}\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "type:check": "tsc --noEmit",
-    "lint": "eslint ./src"
+    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.11.1",
@@ -20,6 +20,7 @@
     "gatsby-image": "^2.3.5",
     "gatsby-plugin-netlify": "^2.2.4",
     "gatsby-plugin-netlify-cms": "^4.2.5",
+    "gatsby-plugin-prettier-eslint": "^1.0.4",
     "gatsby-plugin-purgecss": "^5.0.0",
     "gatsby-plugin-react-helmet": "^3.2.5",
     "gatsby-plugin-sass": "^2.2.4",
@@ -51,6 +52,7 @@
     "@types/react-dom": "^16.9.8",
     "@typescript-eslint/eslint-plugin": "^3.9.0",
     "@typescript-eslint/parser": "^3.9.0",
+    "D": "^1.0.0",
     "eslint": "^7.7.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",

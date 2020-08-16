@@ -31,6 +31,10 @@ module.exports = {
         name: 'images',
       },
     },
+    {
+      resolve: 'gatsby-plugin-prettier-eslint',
+      options: {},
+    },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
@@ -76,4 +80,4 @@ module.exports = {
     }, // must be after other CSS plugins
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
-}
+};
