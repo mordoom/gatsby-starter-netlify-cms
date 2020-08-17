@@ -5,7 +5,7 @@ export const HTMLContent = ({ content, className }) => (
   <div className={className} dangerouslySetInnerHTML={{ __html: content }} />
 );
 
-const Content = ({ content, className }) => <div className={className}>{content}</div>;
+export const Content = ({ content, className }) => <div className={className}>{content}</div>;
 
 Content.propTypes = {
   content: PropTypes.node,
@@ -13,5 +13,3 @@ Content.propTypes = {
 };
 
 HTMLContent.propTypes = Content.propTypes;
-
-export default Content;

@@ -6,6 +6,23 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        // build-javascript stage is one for production builds
+        stages: ['develop', `build-javascript`],
+        options: {
+          emitWarning: true,
+          failOnError: false,
+          // optionally you can also use fail builds on warnings - depend how much you want to enforce it
+          failOnWarning: false,
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-prettier-eslint',
+      options: {},
+    },
     'gatsby-plugin-typescript',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sass',
@@ -30,10 +47,6 @@ module.exports = {
         path: `${__dirname}/src/img`,
         name: 'images',
       },
-    },
-    {
-      resolve: 'gatsby-plugin-prettier-eslint',
-      options: {},
     },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',

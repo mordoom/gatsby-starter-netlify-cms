@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import github from '../img/github-icon.svg';
 
-const Navbar = class extends React.Component {
+export const Navbar = class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -86,5 +86,3 @@ const Navbar = class extends React.Component {
     );
   }
 };
-
-export default Navbar;

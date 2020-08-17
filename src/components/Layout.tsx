@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
-import Footer from './Footer';
-import Navbar from './Navbar';
+import { Footer } from './Footer';
+import { Navbar } from './Navbar';
 import './all.sass';
-import useSiteMetadata from './SiteMetadata';
+import { useSiteMetadata } from './SiteMetadata';
 import { withPrefix } from 'gatsby';
 
 const Container = styled.div`
   background-color: #f1f1f1;
 `;
 
-const TemplateWrapper = ({ children }) => {
+export const Layout = ({ children }) => {
   const { title, description } = useSiteMetadata();
   return (
     <Container>
@@ -56,5 +56,3 @@ const TemplateWrapper = ({ children }) => {
     </Container>
   );
 };
-
-export default TemplateWrapper;

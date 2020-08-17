@@ -6,6 +6,8 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
+    'plugin:import/errors',
+    'plugin:import/typescript',
   ],
   settings: {
     react: {
@@ -30,6 +32,8 @@ module.exports = {
     'react/prop-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'import/default': 'off',
+    'import/no-default-export': 1,
   },
   overrides: [
     // Override some TypeScript rules just for .js files

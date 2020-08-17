@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { IndexPageTemplate } from '../../templates/index-page';
 
-const IndexPagePreview = ({ entry, getAsset }) => {
+export const IndexPagePreview = ({ entry, getAsset }) => {
   const data = entry.getIn(['data']).toJS();
 
   if (data) {
@@ -28,5 +28,3 @@ IndexPagePreview.propTypes = {
   }),
   getAsset: PropTypes.func,
 };
-
-export default IndexPagePreview;

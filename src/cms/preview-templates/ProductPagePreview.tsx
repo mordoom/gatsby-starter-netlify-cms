@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ProductPageTemplate } from '../../templates/product-page';
 
-const ProductPagePreview = ({ entry, getAsset }) => {
+export const ProductPagePreview = ({ entry, getAsset }) => {
   const entryBlurbs = entry.getIn(['data', 'intro', 'blurbs']);
   const blurbs = entryBlurbs ? entryBlurbs.toJS() : [];
 
@@ -52,5 +52,3 @@ ProductPagePreview.propTypes = {
   }),
   getAsset: PropTypes.func,
 };
-
-export default ProductPagePreview;
