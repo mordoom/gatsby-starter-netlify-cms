@@ -1,88 +1,115 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
-import github from '../img/github-icon.svg';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Drawer,
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 
-export const Navbar = class extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: false,
-      navBarActiveClass: '',
-    };
-  }
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      color: 'white',
+    },
+    nav: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: '100%',
+    },
+  })
+);
 
-  toggleHamburger = () => {
-    // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !this.state.active,
-      },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-              navBarActiveClass: 'is-active',
-            })
-          : this.setState({
-              navBarActiveClass: '',
-            });
-      }
-    );
-  };
+const useDrawerStyles = makeStyles({
+  list: {
+    width: 250,
+  },
+  fullList: {
+    width: 'auto',
+  },
+});
 
-  render() {
-    return (
-      <nav className="navbar is-transparent" role="navigation" aria-label="main-navigation">
-        <div className="container">
-          <div className="navbar-brand">
+export const PopoutMenu = ({ open, onClose }) => {
+  const classes = useDrawerStyles();
+  return (
+    <Drawer anchor="left" open={open} onClose={onClose}>
+      <div className={classes.list} role="presentation" onClick={onClose} onKeyDown={onClose}>
+        <List>
+          <Link className="navbar-item" to="/about">
+            <ListItem button>
+              <ListItemText primary="About" />
+            </ListItem>
+          </Link>
+          <Link className="navbar-item" to="/products">
+            <ListItem button>
+              <ListItemText primary="Products" />
+            </ListItem>
+          </Link>
+          <Link className="navbar-item" to="/blog">
+            <ListItem button>
+              <ListItemText primary="Blog" />
+            </ListItem>
+          </Link>
+          <Link className="navbar-item" to="/contact">
+            <ListItem button>
+              <ListItemText primary="Contact" />
+            </ListItem>
+          </Link>
+          <Link className="navbar-item" to="/contact/examples">
+            <ListItem button>
+              <ListItemText primary="Form Examples" />
+            </ListItem>
+          </Link>
+        </List>
+      </div>
+    </Drawer>
+  );
+};
+
+export const Navbar = () => {
+  const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const onOpen = () => setOpen(true);
+  const onClose = () => setOpen(false);
+
+  return (
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+            onClick={onOpen}
+          >
+            <MenuIcon />
+          </IconButton>
+          <div className={classes.nav}>
             <Link to="/" className="navbar-item" title="Logo">
-              MORDOOM
+              <Typography variant="h6" className={classes.title}>
+                MORDOOM
+              </Typography>
             </Link>
-            {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="navMenu"
-              onClick={() => this.toggleHamburger()}
-            >
-              <span />
-              <span />
-              <span />
-            </div>
+            <Button color="inherit">Login</Button>
           </div>
-          <div id="navMenu" className={`navbar-menu ${this.state.navBarActiveClass}`}>
-            <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
-              <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
-              </Link>
-            </div>
-            <div className="navbar-end has-text-centered">
-              <a
-                className="navbar-item"
-                href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="icon">
-                  <img src={github} alt="Github" />
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
-    );
-  }
+        </Toolbar>
+      </AppBar>
+      <PopoutMenu open={open} onClose={onClose} />
+    </div>
+  );
 };
