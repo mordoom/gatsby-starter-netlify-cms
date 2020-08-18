@@ -14,26 +14,6 @@ import {
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      color: 'white',
-    },
-    nav: {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      width: '100%',
-    },
-  })
-);
-
 const useDrawerStyles = makeStyles({
   list: {
     width: 250,
@@ -79,6 +59,26 @@ export const PopoutMenu = ({ open, onClose }) => {
     </Drawer>
   );
 };
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      color: 'white',
+    },
+    nav: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: '100%',
+    },
+  })
+);
 
 export const Navbar = () => {
   const classes = useStyles();
