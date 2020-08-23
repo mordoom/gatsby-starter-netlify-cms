@@ -4,7 +4,7 @@ import { Link, graphql } from 'gatsby';
 
 import { Layout } from '../components/Layout';
 import { Features } from '../components/Features';
-import BlogRoll from '../components/BlogRoll';
+import { BlogRoll } from '../components/BlogRoll';
 import { makeStyles, Button, Container, Typography, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
