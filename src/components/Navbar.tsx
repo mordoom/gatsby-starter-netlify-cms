@@ -31,7 +31,7 @@ export const PopoutMenu = ({ menuLinks, open, onClose }) => {
       <div className={classes.list} role="presentation" onClick={onClose} onKeyDown={onClose}>
         <List>
           {menuLinks.map(({ name, link }) => (
-            <Link key={name} className="navbar-item" to={link}>
+            <Link key={name} to={link}>
               <ListItem button>
                 <ListItemText primary={name} />
               </ListItem>
@@ -84,7 +84,7 @@ export const Navbar = () => {
             <MenuIcon />
           </IconButton>
           <div className={classes.nav}>
-            <Link to="/" className="navbar-item" title="Logo">
+            <Link to="/" title="Logo">
               <Typography variant="h6" className={classes.title}>
                 MORDOOM
               </Typography>
