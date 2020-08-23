@@ -13,6 +13,7 @@ import {
   ListItemText,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import { useSiteMetadata } from './SiteMetadata';
 
 const useDrawerStyles = makeStyles({
   list: {
@@ -23,37 +24,19 @@ const useDrawerStyles = makeStyles({
   },
 });
 
-export const PopoutMenu = ({ open, onClose }) => {
+export const PopoutMenu = ({ menuLinks, open, onClose }) => {
   const classes = useDrawerStyles();
   return (
     <Drawer anchor="left" open={open} onClose={onClose}>
       <div className={classes.list} role="presentation" onClick={onClose} onKeyDown={onClose}>
         <List>
-          <Link className="navbar-item" to="/about">
-            <ListItem button>
-              <ListItemText primary="About" />
-            </ListItem>
-          </Link>
-          <Link className="navbar-item" to="/products">
-            <ListItem button>
-              <ListItemText primary="Products" />
-            </ListItem>
-          </Link>
-          <Link className="navbar-item" to="/blog">
-            <ListItem button>
-              <ListItemText primary="Blog" />
-            </ListItem>
-          </Link>
-          <Link className="navbar-item" to="/contact">
-            <ListItem button>
-              <ListItemText primary="Contact" />
-            </ListItem>
-          </Link>
-          <Link className="navbar-item" to="/contact/examples">
-            <ListItem button>
-              <ListItemText primary="Form Examples" />
-            </ListItem>
-          </Link>
+          {menuLinks.map(({ name, link }) => (
+            <Link key={name} className="navbar-item" to={link}>
+              <ListItem button>
+                <ListItemText primary={name} />
+              </ListItem>
+            </Link>
+          ))}
         </List>
       </div>
     </Drawer>
@@ -85,6 +68,7 @@ export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const onOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
+  const { menuLinks } = useSiteMetadata();
 
   return (
     <div className={classes.root}>
@@ -109,7 +93,7 @@ export const Navbar = () => {
           </div>
         </Toolbar>
       </AppBar>
-      <PopoutMenu open={open} onClose={onClose} />
+      <PopoutMenu menuLinks={menuLinks} open={open} onClose={onClose} />
     </div>
   );
 };
