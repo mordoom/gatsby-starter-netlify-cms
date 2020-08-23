@@ -6,18 +6,9 @@ import { Layout } from '../components/Layout';
 import { Features } from '../components/Features';
 import { BlogRoll } from '../components/BlogRoll';
 import { makeStyles, Button, Container, Typography, Grid } from '@material-ui/core';
+import { TitleImage } from '../components/TitleImage';
 
 const useStyles = makeStyles(() => ({
-  fullWidthImage: {
-    width: '100vw',
-    height: '400px',
-    backgroundSize: 'cover',
-    backgroundPosition: `top left`,
-    backgroundAttachment: `fixed`,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   textContainer: {
     display: 'flex',
     height: '150px',
@@ -45,17 +36,12 @@ const useStyles = makeStyles(() => ({
 const Title = ({ image, title, subheading }) => {
   const classes = useStyles();
   return (
-    <div
-      className={classes.fullWidthImage}
-      style={{
-        backgroundImage: `url(${image.childImageSharp ? image.childImageSharp.fluid.src : image})`,
-      }}
-    >
+    <TitleImage image={image.childImageSharp ? image.childImageSharp.fluid.src : image}>
       <div className={classes.textContainer}>
         <h1 className={classes.heading}>{title}</h1>
         <h3 className={classes.subheading}>{subheading}</h3>
       </div>
-    </div>
+    </TitleImage>
   );
 };
 

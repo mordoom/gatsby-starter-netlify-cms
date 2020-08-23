@@ -6,6 +6,7 @@ import { Features } from '../components/Features';
 import { Testimonials } from '../components/Testimonials';
 import { Pricing } from '../components/Pricing';
 import { PreviewCompatibleImage } from '../components/PreviewCompatibleImage';
+import { TitleImage } from '../components/TitleImage';
 
 export const ProductPageTemplate = ({
   image,
@@ -19,12 +20,7 @@ export const ProductPageTemplate = ({
   pricing,
 }) => (
   <div className="content">
-    <div
-      className="full-width-image-container margin-top-0"
-      style={{
-        backgroundImage: `url(${image.childImageSharp ? image.childImageSharp.fluid.src : image})`,
-      }}
-    >
+    <TitleImage image={image.childImageSharp ? image.childImageSharp.fluid.src : image}>
       <h2
         className="has-text-weight-bold is-size-1"
         style={{
@@ -36,7 +32,7 @@ export const ProductPageTemplate = ({
       >
         {title}
       </h2>
-    </div>
+    </TitleImage>
     <section className="section section--gradient">
       <div className="container">
         <div className="section">
@@ -77,13 +73,8 @@ export const ProductPageTemplate = ({
                 </div>
               </div>
               <Testimonials testimonials={testimonials} />
-              <div
-                className="full-width-image-container"
-                style={{
-                  backgroundImage: `url(${
-                    fullImage.childImageSharp ? fullImage.childImageSharp.fluid.src : fullImage
-                  })`,
-                }}
+              <TitleImage
+                image={fullImage.childImageSharp ? fullImage.childImageSharp.fluid.src : fullImage}
               />
               <h2 className="has-text-weight-semibold is-size-2">{pricing.heading}</h2>
               <p className="is-size-5">{pricing.description}</p>

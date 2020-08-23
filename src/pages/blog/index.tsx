@@ -2,15 +2,11 @@ import React from 'react';
 
 import { Layout } from '../../components/Layout';
 import { BlogRoll } from '../../components/BlogRoll';
+import { TitleImage } from '../../components/TitleImage';
 
 export default () => (
   <Layout>
-    <div
-      className="full-width-image-container margin-top-0"
-      style={{
-        backgroundImage: `url('/img/blog-index.jpg')`,
-      }}
-    >
+    <TitleImage image="/img/blog-index.jpg">
       <h1
         className="has-text-weight-bold is-size-1"
         style={{
@@ -22,7 +18,7 @@ export default () => (
       >
         Latest Stories
       </h1>
-    </div>
+    </TitleImage>
     <section className="section">
       <div className="container">
         <div className="content">
