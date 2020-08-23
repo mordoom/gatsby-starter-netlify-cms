@@ -5,7 +5,7 @@ import { Link, graphql } from 'gatsby';
 import { Layout } from '../components/Layout';
 import { Features } from '../components/Features';
 import BlogRoll from '../components/BlogRoll';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Button, Container, Typography, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   fullWidthImage: {
@@ -60,49 +60,39 @@ const Title = ({ image, title, subheading }) => {
 };
 
 const PageContent = (props) => (
-  <section className="section section--gradient">
-    <div className="container">
-      <div className="section">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="content">
-              <div className="content">
-                <div className="tile">
-                  <h1 className="title">{props.mainpitch.title}</h1>
-                </div>
-                <div className="tile">
-                  <h3 className="subtitle">{props.mainpitch.description}</h3>
-                </div>
-              </div>
-              <div className="columns">
-                <div className="column is-12">
-                  <h3 className="has-text-weight-semibold is-size-2">{props.heading}</h3>
-                  <p>{props.description}</p>
-                </div>
-              </div>
-              <Features gridItems={props.blurbs} />
-              <div className="columns">
-                <div className="column is-12 has-text-centered">
-                  <Link className="btn" to="/products">
-                    See all products
-                  </Link>
-                </div>
-              </div>
-              <div className="column is-12">
-                <h3 className="has-text-weight-semibold is-size-2">Latest stories</h3>
-                <BlogRoll />
-                <div className="column is-12 has-text-centered">
-                  <Link className="btn" to="/blog">
-                    Read more
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <Container>
+    <Typography variant="h3" component="h1">
+      {props.mainpitch.title}
+    </Typography>
+    <Typography variant="body1" component="h3">
+      {props.mainpitch.description}
+    </Typography>
+    <Typography variant="h3" component="h3">
+      {props.heading}
+    </Typography>
+    <Typography variant="body1" component="p">
+      {props.description}
+    </Typography>
+    <Features gridItems={props.blurbs} />
+    <Grid container justify="center">
+      <Link to="/products">
+        <Button variant="contained" color="primary">
+          See all products
+        </Button>
+      </Link>
+    </Grid>
+    <Typography variant="h3" component="h3">
+      Latest stories
+    </Typography>
+    <BlogRoll />
+    <Grid container justify="center">
+      <Link to="/blog">
+        <Button variant="contained" color="primary">
+          Read more
+        </Button>
+      </Link>
+    </Grid>
+  </Container>
 );
 
 export const IndexPage = ({ data }) => {
