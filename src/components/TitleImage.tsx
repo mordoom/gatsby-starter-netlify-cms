@@ -14,7 +14,12 @@ const useTitleStyles = makeStyles(() => ({
   },
 }));
 
-export const TitleImage = ({ image, children }) => {
+interface TitleImageProps {
+  image: string;
+  children?: JSX.Element;
+}
+
+export const TitleImage = ({ image, children }: TitleImageProps) => {
   const classes = useTitleStyles();
   return (
     <div className={classes.fullWidthImage} style={{ backgroundImage: `url(${image})` }}>
