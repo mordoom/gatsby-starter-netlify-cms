@@ -11,6 +11,10 @@ const Container = styled.div`
   background-color: #f1f1f1;
 `;
 
+const PageContent = styled.div`
+  flex: 1 1 auto;
+`;
+
 export const Layout = ({ children }) => {
   const { title, description } = useSiteMetadata();
   return (
@@ -51,7 +55,7 @@ export const Layout = ({ children }) => {
         <meta property="og:image" content={`${withPrefix('/')}img/og-image.jpg`} />
       </Helmet>
       <Navbar />
-      <div>{children}</div>
+      <PageContent>{children}</PageContent>
       <Footer />
     </Container>
   );
